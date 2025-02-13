@@ -11,7 +11,7 @@ public abstract class Student { //abstract class
     protected String name;
     public int age;
 
-    Student(int id, String name) {
+    protected Student(int id, String name) {
         this.id = id;
         this.name = name;
     }

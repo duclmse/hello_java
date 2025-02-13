@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 public class StreamApiDemo {
 
     public static void main(String[] args) {
-        lambdaExpressionDemo();
+        // lambdaExpressionDemo();
         System.out.println("--------------------");
         streamApiDemo();
     }
@@ -40,15 +40,16 @@ public class StreamApiDemo {
         //   .filter (e => e > 5) // => [6, 8]
 
         var list = new ArrayList<>(List.of(1, 2, 3, 4));
-        var stream = list.stream() //
+        var stream = list.stream().parallel() //
                 .map(e -> { // Intermediate stream operation -> returns stream
                     System.out.print("map: " + e + " * 2 = " + (e * 2) + "; ");
                     return e * 2;
-                }).filter(e -> { // Intermediate stream operation -> returns stream
+                }) //
+                .filter(e -> { // Intermediate stream operation -> returns stream
                     System.out.println("filter: " + e + " > 5 -> " + (e > 5));
                     return e > 5;
                 });
-        // list.add(5);
+        list.add(5);
 
         var list1 = stream.toList(); // Terminal operation -> returns List; stream cannot be re-used
         // stream.map(e -> e * 2); // invalid
